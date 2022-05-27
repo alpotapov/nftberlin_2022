@@ -26,7 +26,9 @@ const PageBase = ({ children }) => {
 
         {/* <div className="border border-black h-0 w-full"/> */}
 
-        <div className="flex-grow flex flex-col min-h-full">{children}</div>
+        <div className="flex-grow flex flex-col min-h-full pb-6">
+          {children}
+        </div>
       </div>
     </div>
   );
