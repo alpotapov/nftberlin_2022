@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { DAppProvider, ChainId } from '@usedapp/core';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ArjsProvider } from 'arjs-react';
 
 import './index.css';
 import App from './App';
@@ -22,11 +23,19 @@ const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
-    <DAppProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
-    </DAppProvider>
+    <ArjsProvider
+      connectors={{
+        arconnect: true,
+        arweave: true,
+      }}
+      enableSWC={false}
+    >
+      <DAppProvider config={config}>
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
+      </DAppProvider>
+    </ArjsProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

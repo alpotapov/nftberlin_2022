@@ -1,5 +1,5 @@
 import React from 'react';
-import { useArjs } from 'arjs-react/dist/cjs';
+import PropTypes from 'prop-types';
 
 import { shortenArweaveAddress } from '../../utils/address';
 import ConnectIcon from './Connect.svg';
@@ -12,8 +12,7 @@ const onArweaveConnect = async (wallet, setBalance, setAddress) => {
   setAddress(address);
 };
 
-const ArweaveConnection = () => {
-  const wallet = useArjs();
+const ArweaveConnection = ({ wallet }) => {
   const permission = { permissions: ['SIGN_TRANSACTION'] };
 
   const activate = (connector, key) => {
@@ -57,6 +56,10 @@ const ArweaveConnection = () => {
       )}
     </div>
   );
+};
+
+ArweaveConnection.propTypes = {
+  wallet: PropTypes.shape().isRequired,
 };
 
 export default ArweaveConnection;
