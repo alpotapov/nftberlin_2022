@@ -15,12 +15,7 @@ const AppointmentPage = () => {
   const { library, account } = useEthers();
   const signer = library && library.getSigner();
 
-  const { register, handleSubmit, control, setValue } = useForm({
-    defaultValues: {
-      recordId: 'test',
-    },
-  });
-  // const [txId, setTxId] = React.useState(undefined);
+  const { register, handleSubmit, control, setValue } = useForm();
   const isLoading = React.useRef(false);
   const isLoaded = React.useRef(false);
 
@@ -28,7 +23,7 @@ const AppointmentPage = () => {
 
   const onTxSubmitted = (newTxId) => {
     console.log({ newTxId });
-    setValue(newTxId);
+    setValue('recordId', newTxId);
   };
 
   const onSubmit = (data) => {
@@ -120,30 +115,29 @@ const AppointmentPage = () => {
             </button>
           </div>
         </form>
-        {arweaveTransactionId ? (
-          <div className="bg-minsk rounded-xl p-6 space-y-4">
-            <p className="text-2xl uppercase font-bold text-saffron-mango mb-6">
-              NFT Medical Record
-            </p>
-            <StringInput
-              title="Record ID"
-              subtext=""
-              // disabled
-              placeholder="Transaction ID"
-              register={register('recordId')}
-              control={control}
-            />
-            <button
-              type="button"
-              className="btn rounded-md text-md font-bold bg-heliotrope border-heliotrope"
-              onClick={onMintRecord}
-            >
-              <div className="w-full flex flex-row justify-between items-center">
-                <div className="flex-grow">Mint NFT Medical Record</div>
-              </div>
-            </button>
-          </div>
-        ) : null}
+        (
+        <div className="bg-minsk rounded-xl p-6 space-y-4">
+          <p className="text-2xl uppercase font-bold text-saffron-mango mb-6">
+            NFT Medical Record
+          </p>
+          <StringInput
+            title="Record ID"
+            subtext=""
+            // disabled
+            placeholder="Transaction ID"
+            register={register('recordId')}
+            control={control}
+          />
+          <button
+            type="button"
+            className="btn rounded-md text-md font-bold bg-heliotrope border-heliotrope"
+            onClick={onMintRecord}
+          >
+            <div className="w-full flex flex-row justify-between items-center">
+              <div className="flex-grow">Mint NFT Medical Record</div>
+            </div>
+          </button>
+        </div>
       </div>
     </PageBase>
   );
