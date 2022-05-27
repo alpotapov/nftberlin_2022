@@ -1,16 +1,26 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { useArjs } from 'arjs-react';
+import { useContractFunction, useEthers } from '@usedapp/core';
 
+import { ethers } from 'ethers';
 import PageBase from '../PageBase/PageBase';
 import TextAreaInput from '../../components/Inputs/TextArea';
 import StringInput from '../../components/Inputs/StringInput';
 
 import ArweaveService from '../../services/ArweaveService';
+import { addresses, interfaces } from '../../contracts/ContractContext';
 
 const AppointmentPage = () => {
-  const { register, handleSubmit } = useForm();
-  const [txId, setTxId] = React.useState(undefined);
+  const { library, account } = useEthers();
+  const signer = library && library.getSigner();
+
+  const { register, handleSubmit, control, setValue } = useForm({
+    defaultValues: {
+      recordId: 'test',
+    },
+  });
+  // const [txId, setTxId] = React.useState(undefined);
   const isLoading = React.useRef(false);
   const isLoaded = React.useRef(false);
 
@@ -18,7 +28,7 @@ const AppointmentPage = () => {
 
   const onTxSubmitted = (newTxId) => {
     console.log({ newTxId });
-    setTxId(newTxId);
+    setValue(newTxId);
   };
 
   const onSubmit = (data) => {
@@ -31,18 +41,43 @@ const AppointmentPage = () => {
     console.log({ errors });
   };
 
+  const arweaveTransactionId = useWatch({
+    control,
+    name: 'recordId',
+  });
+
   React.useEffect(() => {
-    if (!txId || isLoading.current || isLoaded.current) return;
+    if (
+      !arweaveTransactionId ||
+      isLoading.current ||
+      isLoaded.current ||
+      arweaveTransactionId === 'test'
+    )
+      return;
     isLoading.current = true;
     console.log('FETCHING TX STATUS');
     setTimeout(() => {
-      ArweaveService.getTransactionStatus(wallet).then((result) => {
-        console.log({ result });
-        isLoading.current = false;
-        isLoaded.current = true;
-      });
+      ArweaveService.getTransactionStatus(wallet, arweaveTransactionId).then(
+        (result) => {
+          console.log({ result });
+          isLoading.current = false;
+          isLoaded.current = true;
+        }
+      );
     }, 3000);
-  }, [txId, wallet]);
+  }, [arweaveTransactionId, wallet]);
+
+  const { send } = useContractFunction(
+    new ethers.Contract(
+      addresses.medicalRecord,
+      interfaces.medicalRecord,
+      signer
+    ),
+    'mintRecord'
+  );
+  const onMintRecord = () => {
+    send(account, arweaveTransactionId);
+  };
 
   return (
     <PageBase>
@@ -85,15 +120,23 @@ const AppointmentPage = () => {
             </button>
           </div>
         </form>
-        {txId ? (
+        {arweaveTransactionId ? (
           <div className="bg-minsk rounded-xl p-6 space-y-4">
             <p className="text-2xl uppercase font-bold text-saffron-mango mb-6">
               NFT Medical Record
             </p>
-            <StringInput title="Record ID" subtext="" disabled value={txId} />
+            <StringInput
+              title="Record ID"
+              subtext=""
+              // disabled
+              placeholder="Transaction ID"
+              register={register('recordId')}
+              control={control}
+            />
             <button
               type="button"
               className="btn rounded-md text-md font-bold bg-heliotrope border-heliotrope"
+              onClick={onMintRecord}
             >
               <div className="w-full flex flex-row justify-between items-center">
                 <div className="flex-grow">Mint NFT Medical Record</div>

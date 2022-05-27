@@ -6,8 +6,7 @@ const saveAppointmentOutcome = async (wallet, notes, onTxSubmitted) => {
   onTxSubmitted(transaction.id);
 };
 
-const getTransactionStatus = async (wallet) => {
-  const transactionId = '5mkIDQQlBNpo2r1f2Ju06XA6eC5nwR8UMhkBP-ZaQB0';
+const getTransactionStatus = async (wallet, transactionId) => {
   const arweave = await wallet.getArweave();
   const result = await arweave.transactions.getStatus(transactionId);
   return result;

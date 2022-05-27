@@ -41,7 +41,7 @@ StringInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
   register: PropTypes.shape().isRequired,
   disabled: PropTypes.bool,
-  control: PropTypes.string.isRequired,
+  control: PropTypes.shape().isRequired,
 };
 
 StringInput.defaultProps = {
