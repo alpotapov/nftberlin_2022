@@ -27,3 +27,11 @@ Patient gives a negative review to the doctor and the case is sent to the arbitr
 A doctor from the community is randomly (?) selected and given access to the appointment outcome data.
 
 Randomly selected doctor reviews the case and gives his judgement.
+
+
+### TODO
+
+Save and retrieve text data from Arweave. (15:30 - 16:30)
+
+Connect dapp to Arweave wallet and retrieve wallet balance (16:30 - 17:50)
+

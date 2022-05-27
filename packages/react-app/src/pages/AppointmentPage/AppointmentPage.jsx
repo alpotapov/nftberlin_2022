@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 
 import PageBase from '../PageBase/PageBase';
 import TextAreaInput from '../../components/Inputs/TextArea';
-import SubmitButton from './components/SubmitButton';
 
 const AppointmentPage = () => {
   const { register, handleSubmit } = useForm();
@@ -47,7 +46,14 @@ const AppointmentPage = () => {
             register={register('appointmentOutcome', { required: true })}
           />
           <div>
-            <SubmitButton>Finish Appointment</SubmitButton>
+            <button
+              type="submit"
+              className="btn rounded-md text-md font-bold bg-heliotrope border-heliotrope"
+            >
+              <div className="w-full flex flex-row justify-between items-center">
+                <div className="flex-grow">Finalize Appointment</div>
+              </div>
+            </button>
           </div>
         </form>
       </div>

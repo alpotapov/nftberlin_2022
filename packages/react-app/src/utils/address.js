@@ -17,3 +17,9 @@ export function shortenAddress(address, chars = 4) {
   }
   return `${parsed.substring(0, chars + 2)}...${parsed.substring(42 - chars)}`;
 }
+
+export function shortenArweaveAddress(address, chars = 4) {
+  return `${address.substring(0, chars + 2)}...${address.substring(
+    42 - chars
+  )}`;
+}
