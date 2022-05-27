@@ -1,0 +1,73 @@
+{
+  "name": "@scaffold-eth/react-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@craco/craco": "^6.3.0",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@ethersproject/address": "^5.5.0",
+    "@ethersproject/providers": "^5.4.5",
+    "@fontsource/roboto": "^4.5.0",
+    "@pinata/sdk": "^1.1.25",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "@usedapp/core": "0.7.0",
+    "@web3-react/core": "^6.1.9",
+    "3d-react-carousal": "^5.0.0",
+    "apexcharts": "^3.33.1",
+    "autoprefixer": "^9.8.8",
+    "axios": "^0.26.1",
+    "classnames": "^2.3.1",
+    "daisyui": "^1.16.0",
+    "date-fns": "^2.24.0",
+    "env-cmd": "^10.1.0",
+    "ethers": "^5.5.1",
+    "ipfs-api": "^26.1.2",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-apexcharts": "^1.3.9",
+    "react-dom": "^17.0.2",
+    "react-dropzone": "^12.0.5",
+    "react-hook-form": "^7.30.0",
+    "react-query": "^3.39.0",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "4.0.3",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.16",
+    "uuid": "^8.3.2",
+    "web-vitals": "^1.1.2",
+    "web3": "^1.5.2",
+    "zustand": "^3.7.0"
+  },
+  "scripts": {
+    "start": "env-cmd -f .env.dev craco start",
+    "ipfs": "node ./ipfsUpload.js",
+    "build": "env-cmd -f .env.dev craco build",
+    "start:int": "env-cmd -f .env.int craco start",
+    "build:int": "env-cmd -f .env.int craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "postcss": "^7.0.39",
+    "prettier": "^2.4.1"
+  }
+}

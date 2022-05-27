@@ -2,9 +2,11 @@
 
 ## Telemedicine x web3
 
-### User Stories (hackathon goals)
+### User Stories
 
 Patient schedules a telemedicine appointment with the doctor.
+
+**HACKATHON STUFF**
 
 Patient shares medical history items with the doctor in advance.
 
@@ -16,7 +18,7 @@ Appointment outcomes (video chat recording and text data) are stored on Arweave.
 
 Patient has access to all appointment outcomes.
 
-### User Stories (plans for the future)
+**/HACKATHON STUFF**
 
 Patient gives a positive review to the doctor.
 
