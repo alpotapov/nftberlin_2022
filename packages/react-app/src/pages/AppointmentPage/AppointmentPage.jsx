@@ -2,12 +2,12 @@ import React from 'react';
 
 import PageBase from '../PageBase/PageBase';
 
-const MainPage = () => {
+const AppointmentPage = () => {
   return (
     <PageBase>
-      <div className="">Hello</div>
+      <div>Apoointment</div>
     </PageBase>
   );
 };
 
-export default MainPage;
+export default AppointmentPage;
