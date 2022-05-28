@@ -35,6 +35,7 @@ module.exports = {
         magenta: '#EE72FE',
         byzantium: '#6C388B',
         purple: '#9C49CD',
+        'chetwode-blue': '#8A92DF',
       },
       fontFamily: {
         sans: 'Montserrat, sans-serif',

@@ -77,26 +77,13 @@ const AppointmentPage = () => {
   return (
     <PageBase>
       <div className="container mx-auto space-y-4">
-        <div className="bg-minsk rounded-xl p-6">
-          <p className="text-2xl uppercase font-bold text-saffron-mango mb-6">
-            Video Conference
-          </p>
-          <div className="flex flex-row justify-around">
-            <div className="">
-              <div className="bg-gray-400 w-96 h-96" />
-            </div>
-            <div className="">
-              <div className="bg-gray-400 w-96 h-96" />
-            </div>
-          </div>
+        <div className="rounded-xl">
+          <div className="bg-gray-400 w-96 h-96" />
         </div>
         <form
-          className="bg-minsk rounded-xl p-6 space-y-4"
+          className="rounded-xl space-y-4"
           onSubmit={handleSubmit(onSubmit, onError)}
         >
-          <p className="text-2xl uppercase font-bold text-saffron-mango mb-6">
-            Doctor&apos;s Notes
-          </p>
           <TextAreaInput
             title="Doctor's notes"
             subtext="Write down diagnosis, prescription etc"
@@ -107,7 +94,7 @@ const AppointmentPage = () => {
           <div>
             <button
               type="submit"
-              className="btn rounded-md text-md font-bold bg-heliotrope border-heliotrope"
+              className="btn rounded-md text-md font-bold bg-chetwode-blue border-chetwode-blue"
             >
               <div className="w-full flex flex-row justify-between items-center">
                 <div className="flex-grow">Finalize Appointment</div>
@@ -115,22 +102,21 @@ const AppointmentPage = () => {
             </button>
           </div>
         </form>
-        (
-        <div className="bg-minsk rounded-xl p-6 space-y-4">
-          <p className="text-2xl uppercase font-bold text-saffron-mango mb-6">
+        <div className="rounded-xl space-y-4">
+          <p className="text-4xl uppercase font-bold text-chetwode-blue mb-6 mt-12">
             NFT Medical Record
           </p>
           <StringInput
-            title="Record ID"
+            title="Arweave Transaction ID"
             subtext=""
-            // disabled
+            disabled
             placeholder="Transaction ID"
             register={register('recordId')}
             control={control}
           />
           <button
             type="button"
-            className="btn rounded-md text-md font-bold bg-heliotrope border-heliotrope"
+            className="btn rounded-md text-md font-bold bg-chetwode-blue border-chetwode-blue"
             onClick={onMintRecord}
           >
             <div className="w-full flex flex-row justify-between items-center">

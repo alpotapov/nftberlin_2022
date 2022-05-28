@@ -14,7 +14,9 @@ const StringInput = ({
     <div className="flex flex-col justify-center">
       <div className="form-control w-full">
         <label className="label">
-          <span className="label-text text-2xl text-white">{title}</span>
+          <span className="label-text text-2xl text-chetwode-blue">
+            {title}
+          </span>
         </label>
         <label className="label">
           <span className="label-text-alt  text-gray-400">{subtext}</span>
@@ -23,8 +25,8 @@ const StringInput = ({
           type="text"
           placeholder={placeholder}
           className="
-          input w-full focus:ring-0 border-0 border-b-2 rounded-none p-0 px-1 border-white text-white bg-minsk
-          disabled:bg-minsk disabled:text-white
+          input w-full focus:ring-0 border-0 border-b-2 rounded-none p-0 px-1 border-gray-400
+          disabled:bg-white disabled:text-black disabled:border-gray-400
         "
           {...register}
           disabled={disabled}

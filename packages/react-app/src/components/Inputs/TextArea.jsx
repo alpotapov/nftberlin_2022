@@ -6,13 +6,15 @@ const TextAreaInput = ({ title, subtext, placeholder, register }) => {
     <div className="flex flex-col justify-center">
       <div className="form-control">
         <label className="label">
-          <span className="label-text text-2xl text-white">{title}</span>
+          <span className="label-text text-2xl text-chetwode-blue">
+            {title}
+          </span>
         </label>
         <label className="label">
-          <span className="label-text-alt text-gray-400">{subtext}</span>
+          <span className="label-text-alt text-chetwode-blue">{subtext}</span>
         </label>
         <textarea
-          className="textarea focus:ring-0 border-0 border-b-2 rounded-none p-0 px-1 border-white bg-minsk text-white h-32"
+          className="textarea focus:ring-0 border-0 border-b-2 rounded-none p-0 px-1 border-gray-400 h-32"
           placeholder={placeholder}
           {...register}
         />

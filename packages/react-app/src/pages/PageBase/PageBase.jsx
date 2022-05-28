@@ -19,7 +19,7 @@ const PageBase = ({ children }) => {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-b from-vivid-violet via-valhalla to-haiti">
+    <div className="flex min-h-screen flex-col">
       <div className="bg-pattern bg-no-repeat bg-top">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row md:justify-end items-center my-6">
