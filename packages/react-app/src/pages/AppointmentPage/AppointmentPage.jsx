@@ -2,11 +2,13 @@ import React from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { useArjs } from 'arjs-react';
 import { useContractFunction, useEthers } from '@usedapp/core';
+import ReactPlayer from 'react-player';
 
 import { ethers } from 'ethers';
 import PageBase from '../PageBase/PageBase';
 import TextAreaInput from '../../components/Inputs/TextArea';
 import StringInput from '../../components/Inputs/StringInput';
+import MedicalHistoryForDoctor from '../../components/MedicalHistory/MedicalHistoryForDoctor';
 
 import ArweaveService from '../../services/ArweaveService';
 import { addresses, interfaces } from '../../contracts/ContractContext';
@@ -77,31 +79,41 @@ const AppointmentPage = () => {
   return (
     <PageBase>
       <div className="container mx-auto space-y-4">
-        <div className="rounded-xl">
-          <div className="bg-gray-400 w-96 h-96" />
-        </div>
-        <form
-          className="rounded-xl space-y-4"
-          onSubmit={handleSubmit(onSubmit, onError)}
-        >
-          <TextAreaInput
-            title="Doctor's notes"
-            subtext="Write down diagnosis, prescription etc"
-            placeholder="Patient complains about a headache"
-            isTextArea
-            register={register('doctorsNotes', { required: true })}
-          />
+        <div className="flex flex-row space-x-4">
           <div>
-            <button
-              type="submit"
-              className="btn rounded-md text-md font-bold bg-chetwode-blue border-chetwode-blue"
+            <div className="rounded-xl">
+              <ReactPlayer url="video_call.mp4" />
+            </div>
+            <form
+              className="rounded-xl space-y-4"
+              onSubmit={handleSubmit(onSubmit, onError)}
             >
-              <div className="w-full flex flex-row justify-between items-center">
-                <div className="flex-grow">Finalize Appointment</div>
+              <TextAreaInput
+                title="Doctor's notes"
+                subtext="Write down diagnosis, prescription etc"
+                placeholder="Patient complains about a headache"
+                isTextArea
+                register={register('doctorsNotes', { required: true })}
+              />
+              <div>
+                <button
+                  type="submit"
+                  className="btn rounded-md text-md font-bold bg-chetwode-blue border-chetwode-blue"
+                >
+                  <div className="w-full flex flex-row justify-between items-center">
+                    <div className="flex-grow">Finalize Appointment</div>
+                  </div>
+                </button>
               </div>
-            </button>
+            </form>
           </div>
-        </form>
+          <div className="">
+            <p className="text-4xl uppercase font-bold text-chetwode-blue mb-6">
+              Medical History
+            </p>
+            <MedicalHistoryForDoctor />
+          </div>
+        </div>
         <div className="rounded-xl space-y-4">
           <p className="text-4xl uppercase font-bold text-chetwode-blue mb-6 mt-12">
             NFT Medical Record

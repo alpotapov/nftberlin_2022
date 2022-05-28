@@ -1,6 +1,6 @@
 const saveAppointmentOutcome = async (wallet, notes, onTxSubmitted) => {
   const transaction = await wallet.transaction({ data: notes });
-  console.log({ transaction });
+  console.log({ transaction, wallet });
   await wallet.sign(transaction);
   console.log({ transaction });
   const result = await wallet.post(transaction);
